@@ -29,21 +29,25 @@ Add pry-rails to your Gemfile and run bundle install
 
 2.Save the student to the database  
 	
-		torey.save 
+		torey.save   
+
 3. Using the find/set/save syntax update the student's first name to Myles  
 	
 		torey = Student.find_by_id(1)  
 		torey.first_name = "Myles"  
 		torey.save  
+
 4. Delete the student (where first_name is Myles)  
 	
 		torey.destroy
+
 5. In your model, validate that every Student's last name is unique  
 	
 		validates_uniqueness_of :last_name
 	OR
 	
 		validates :last_name, uniqueness: true
+
 6. In your model, validate that every Student has a first and last name that is longer than 4 characters  
 
 		class Student < ActiveRecord::Base  
@@ -54,20 +58,25 @@ Add pry-rails to your Gemfile and run bundle install
 7. Validate that every first and last name cannot be empty  
 	
 			validates :last_name, uniqueness: true, length: {minimum:4}, allow_blank: false    
-			validates :first_name, length: {minimum: 4}, allow_blank: false
+			validates :first_name, length: {minimum: 4}, allow_blank: false 
+
 8. Create a migration that adds a column with a type of string called favorite_color to the students table (don't forget to run rake db:migrate after and for this question write the command in terminal to generate this migration)  
 	
 
 			rails g migration addFavoriteColorToStudents fav_color:string     
-			rake db:migrate    
+			rake db:migrate     
+
 9. Using the create syntax create a student named John Doe who is 23 years old and has a favorite_color of purple  
-		john = Student.create(first_name: "John", last_name: "Doe", age: 23, fav_color: "purple")
+		john = Student.create(first_name: "John", last_name: "Doe", age: 23, fav_color: "purple")  
+
 10. Show if this new student entry is valid  
 
-		john.valid?
+		john.valid?  
+
 11. Show the number of errors for this student instance  
 
-		john.error.full_message
+		john.error.full_message  
+
 12. Using update, Change John Doe's name to Martin Fowler  
 
 		student = Student.find_by_first_name("John")  
@@ -75,37 +84,46 @@ Add pry-rails to your Gemfile and run bundle install
 
 13. Save Martin Fowler  
 
-		student.save
+		student.save  
+
 14. Find all of the Students
 
-		Student.all  
+		Student.all    
+
 15. Find the student with an ID of 128 and if it does not exist, make sure it returns nil and not an error  
 
-		Student.find_by_id(128)
-16. Find the first student in the table  
-		Student.first  
-17. Find the last student in the table  
+		Student.find_by_id(128)  
 
-		Student.last
+16. Find the first student in the table  
+		Student.first   
+
+17. Find the last student in the table  
+		Student.last  
+
 18. Find the student with the last name of Fowler  
 
-		Student.find_by_last_name("Fowler")
+		Student.find_by_last_name("Fowler")  
+
 19. Find all of students who have the first name of Martin and a favorite color of red  
 
-		Student.where(first_name: "Martin", fav_color: "red")
+		Student.where(first_name: "Martin", fav_color: "red")  
+
 20. Find all of the students and limit the search to 5 students, starting with the 2nd student and finally, order the students in alphabetical order  
 
 		Student.limit(5)  
 		Student.offset(1)  
 		Student.order(:last_name)  
-		Student.order(:first_name)  
+		Student.order(:first_name)   
+
 21. Delete Martin Fowler (but first look up who he is!)  
 
 		student = Student.find_by_first_name("Martin")  
-		student.destroy
+		student.destroy  
+
 22. Delete all of the students  
 
-		Student.destroy_all
+		Student.destroy_all  
+		
 ##Bonus
 
 * Use the validates_format_of and regex to only validate names that consist of letters (no numbers or symbols) and start with a capital letter  
