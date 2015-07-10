@@ -26,10 +26,12 @@ Add pry-rails to your Gemfile and run bundle install
 1. Using the new/save syntax, create a student with a first and last name and an age    
 	
 		torey = Student.new(first_name: "Torey", last_name: "Hollingsworth", age: 26)
+
 2.Save the student to the database  
 	
 		torey.save 
 3. Using the find/set/save syntax update the student's first name to Myles  
+	
 		torey = Student.find_by_id(1)  
 		torey.first_name = "Myles"  
 		torey.save  
@@ -55,8 +57,9 @@ Add pry-rails to your Gemfile and run bundle install
 			validates :first_name, length: {minimum: 4}, allow_blank: false
 8. Create a migration that adds a column with a type of string called favorite_color to the students table (don't forget to run rake db:migrate after and for this question write the command in terminal to generate this migration)  
 	
-		rails g migration addFavoriteColorToStudents fav_color:string   
-		rake db:migrate  
+
+			rails g migration addFavoriteColorToStudents fav_color:string     
+			rake db:migrate    
 9. Using the create syntax create a student named John Doe who is 23 years old and has a favorite_color of purple  
 		john = Student.create(first_name: "John", last_name: "Doe", age: 23, fav_color: "purple")
 10. Show if this new student entry is valid  
@@ -80,7 +83,7 @@ Add pry-rails to your Gemfile and run bundle install
 
 		Student.find_by_id(128)
 16. Find the first student in the table  
-		Student.first
+		Student.first  
 17. Find the last student in the table  
 
 		Student.last
